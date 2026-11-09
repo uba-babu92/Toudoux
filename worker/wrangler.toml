@@ -1,0 +1,9 @@
+name = "todo-ai"
+main = "worker.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+# Modèle Grok (voir docs.x.ai pour le nom actuel)
+GROK_MODEL = "grok-3-mini"
+# Mets l'adresse de ton app pour bloquer les autres sites (ex : https://todo.pages.dev)
+ALLOWED_ORIGIN = "*"

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#F4EEE3">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Todo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- ÉCRAN 1 — SPLASH -->
+    <section class="screen active" id="s-splash">
+      <div class="splash">
+        <div class="spiky-slot big" data-spiky></div>
+        <h1 class="logo">Todo</h1>
+        <p class="tagline">La to-do qui te comprend.<br>Zéro culpabilité. Que des petites victoires.</p>
+        <button class="btn primary xl" id="btn-start">C'est parti ⚡</button>
+      </div>
+    </section>
+
+    <!-- ÉCRANS 2-5 — ONBOARDING -->
+    <section class="screen" id="s-onboard">
+      <div class="top-spiky">
+        <div class="spiky-slot" data-spiky></div>
+        <div class="bubble" data-bubble></div>
+      </div>
+      <div class="dots" id="ob-dots"></div>
+      <div class="ob-body" id="ob-body"></div>
+      <div class="ob-actions">
+        <button class="btn ghost" id="ob-back">Retour</button>
+        <button class="btn primary" id="ob-next">Suivant</button>
+      </div>
+    </section>
+
+    <!-- APP PRINCIPALE -->
+    <section class="screen" id="s-main">
+      <header class="top-spiky">
+        <div class="spiky-slot" data-spiky></div>
+        <div class="bubble" data-bubble></div>
+        <div class="xp-pill" id="xp-pill">Niv 1</div>
+      </header>
+
+      <main class="views">
+        <!-- VIDE-TÊTE -->
+        <div class="view active" id="v-dump">
+          <h2 class="view-title">Vide-Tête</h2>
+          <p class="hint">Dis tout ce que tu as en tête, en vrac. Je trie pour toi.</p>
+          <button class="mic" id="mic" aria-label="Parler">
+            <svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><path d="M12 17v5"/></svg>
+          </button>
+          <div class="mic-label" id="mic-label">Appuie et parle</div>
+          <textarea id="dump-text" placeholder="…ou écris ici. Ex : faire mes devoirs de maths, appeler mamie, ranger ma chambre"></textarea>
+          <div class="row">
+            <button class="btn ghost sm" id="btn-sim">🎲 Exemple</button>
+            <button class="btn primary" id="btn-segment">Découper ⚡</button>
+          </div>
+        </div>
+
+        <!-- APERÇU DÉCOUPAGE -->
+        <div class="view" id="v-preview">
+          <h2 class="view-title">Voilà ce que j'ai compris</h2>
+          <p class="hint" id="preview-hint"></p>
+          <ul class="list" id="preview-list"></ul>
+          <div class="row">
+            <button class="btn ghost" id="btn-preview-back">Modifier</button>
+            <button class="btn primary" id="btn-preview-ok">C'est parti !</button>
+          </div>
+        </div>
+
+        <!-- ŒILLÈRES -->
+        <div class="view" id="v-focus">
+          <div class="focus-head">
+            <h2 class="view-title">Œillères</h2>
+            <button class="btn ghost sm" id="btn-roulette">🎰 Je bloque</button>
+          </div>
+          <div class="card-zone" id="card-zone"></div>
+        </div>
+
+        <!-- FRIGO -->
+        <div class="view" id="v-fridge">
+          <h2 class="view-title">Le Frigo 🧊</h2>
+          <p class="hint">Rien n'est perdu. Ces idées sont au frais, tu les reprends quand tu veux.</p>
+          <ul class="list" id="fridge-list"></ul>
+        </div>
+
+        <!-- PROFIL -->
+        <div class="view" id="v-profile">
+          <h2 class="view-title">Ton profil</h2>
+          <div class="stats" id="stats"></div>
+          <div class="xpbar"><div id="xpbar-fill"></div></div>
+          <div class="xp-text" id="xp-text"></div>
+          <h3 class="sub">Badges</h3>
+          <div class="badges" id="badges"></div>
+        </div>
+
+        <!-- RÉGLAGES -->
+        <div class="view" id="v-settings">
+          <h2 class="view-title">Réglages</h2>
+          <div class="settings" id="settings"></div>
+        </div>
+      </main>
+
+      <nav class="tabbar">
+        <button data-tab="v-dump" class="active"><span>🧠</span>Vide-Tête</button>
+        <button data-tab="v-focus"><span>🎯</span>Œillères</button>
+        <button data-tab="v-fridge"><span>🧊</span>Frigo</button>
+        <button data-tab="v-profile"><span>🏆</span>Profil</button>
+        <button data-tab="v-settings"><span>⚙️</span>Réglages</button>
+      </nav>
+    </section>
+
+    <!-- MODALE (roulettes, timer, bonus) -->
+    <div class="modal" id="modal" hidden>
+      <div class="modal-card" id="modal-card"></div>
+    </div>
+
+    <canvas id="confetti"></canvas>
+    <div class="toast" id="toast"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
